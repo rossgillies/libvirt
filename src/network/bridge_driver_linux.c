@@ -251,7 +251,7 @@ int networkCheckRouteCollision(virNetworkDef *def)
              (ipdef = virNetworkDefGetIPByIndex(def, AF_INET, i));
              i++) {
 
-            unsigned int net_dest;
+//            unsigned int net_dest;
             virSocketAddr netmask;
 
             if (virNetworkIPDefNetmask(ipdef, &netmask) < 0) {
@@ -260,16 +260,16 @@ int networkCheckRouteCollision(virNetworkDef *def)
                 continue;
             }
 
-            net_dest = (ipdef->address.data.inet4.sin_addr.s_addr &
-                        netmask.data.inet4.sin_addr.s_addr);
-
-            if ((net_dest == addr_val) &&
-                (netmask.data.inet4.sin_addr.s_addr == mask_val)) {
-                virReportError(VIR_ERR_INTERNAL_ERROR,
-                               _("Network is already in use by interface %1$s"),
-                               iface);
-                return -1;
-            }
+//            net_dest = (ipdef->address.data.inet4.sin_addr.s_addr &
+//                        netmask.data.inet4.sin_addr.s_addr);
+//
+//            if ((net_dest == addr_val) &&
+//                (netmask.data.inet4.sin_addr.s_addr == mask_val)) {
+//                virReportError(VIR_ERR_INTERNAL_ERROR,
+//                               _("Network is already in use by interface %1$s"),
+//                               iface);
+//                return -1;
+//            }
         }
 
         for (i = 0;
